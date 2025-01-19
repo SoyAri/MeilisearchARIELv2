@@ -1,30 +1,29 @@
 //EJEMPLO DE LA DOCUMENTACION
 //FUENTE: https://www.meilisearch.com/docs/guides/front_end/react_quick_start
-import React from 'react';
-import { InstantSearch, SearchBox, InfiniteHits } from 'react-instantsearch';
-import { instantMeiliSearch } from '@meilisearch/instant-meilisearch';
+import React, { useState } from 'react';
+import { MeiliSearch } from 'meilisearch';
 import 'instantsearch.css/themes/satellite.css';
 
-const { searchClient } = instantMeiliSearch(
-  'https://ms-adf78ae33284-106.lon.meilisearch.io', 
-  'a63da4928426f12639e19d62886f621130f3fa9ff3c7534c5d179f0f51c4f303'
-);
+const client = new MeiliSearch({
+  host: 'http://18.227.13.140', 
+  apiKey: 'c716781c75b1115ae1bd945fd73b87d2f12a5f2e878cfc6fbe45f68d57be',
+});
 
-const App = () => (
-  <InstantSearch
-    indexName="steam-videogames"
-    searchClient={searchClient}
-  >
-    <SearchBox />
-    <InfiniteHits hitComponent={Hit} />
-  </InstantSearch>
-);
+const busqueda = () => {
+  const [searchQuery, setSearchQuery] = useState(''); 
+  const [searchResults, setSearchResults] = useState([]); 
 
-const Hit = ({ hit }) => (
-  <article key={hit.id}>
-    <img src={hit.image} alt={hit.name} />
-    <h1>{hit.name}</h1>
-    <p>${hit.description}</p>
-  </article>
-);
-export default App
+  const handleSearch = async () => {
+    const index = client.index('movies'); 
+    const response = await index.search(searchQuery); 
+    setSearchResults(response.hits); 
+  };
+
+  return (
+    <div>
+      <p>TEST</p>
+    </div>
+  );
+};
+
+export default App;
