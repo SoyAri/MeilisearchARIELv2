@@ -26,4 +26,4 @@ const busqueda = () => {
   );
 };
 
-export default App;
+export default busqueda;
