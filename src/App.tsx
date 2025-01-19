@@ -2,7 +2,6 @@
 //FUENTE: https://www.meilisearch.com/docs/guides/front_end/react_quick_start
 import React, { useState } from 'react';
 import { MeiliSearch } from 'meilisearch';
-import 'instantsearch.css/themes/satellite.css';
 
 const client = new MeiliSearch({
   host: 'http://18.227.13.140', 
@@ -13,7 +12,7 @@ const busqueda = () => {
   const [searchQuery, setSearchQuery] = useState(''); 
   const [searchResults, setSearchResults] = useState([]); 
 
-  const handleSearch = async () => {
+  const busquedayresultados = async () => {
     const index = client.index('movies'); 
     const response = await index.search(searchQuery); 
     setSearchResults(response.hits); 
