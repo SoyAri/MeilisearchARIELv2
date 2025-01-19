@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@meilisearch/instant-meilisearch": "^0.23.0",
     "@testing-library/react": "^16.2.0",
     "meilisearch": "^0.48.1",
+    "react-instantsearch": "^7.15.0",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
