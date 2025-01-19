@@ -26,7 +26,7 @@ const BusquedaMEILI = () => {
   }, [searchQuery]);
 
   return (
-    <div className="app-container">
+    <div className={`app-container ${searchResults.length > 0 ? 'results-visible' : ''}`}>
       <h1>ARI CINEMA.tv</h1>
       <input
         type="text"
@@ -41,6 +41,7 @@ const BusquedaMEILI = () => {
         <ul>
           {searchResults.map((movie) => (
             <li key={movie.id}>
+              <img src={movie.poster} alt={movie.title} className="movie-poster" />
               <p>{movie.title} - {movie.genres}</p>
             </li>
           ))}
