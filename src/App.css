@@ -1,0 +1,34 @@
+.app-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-image: url('/assets/background.webp');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-container input {
+    padding: 10px;
+    width: 300px;
+}
+
+.app-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+.app-container li {
+    margin-bottom: 10px;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('/assets/background.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}  

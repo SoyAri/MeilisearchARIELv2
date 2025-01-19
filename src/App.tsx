@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MeiliSearch } from 'meilisearch';
+import './App.css';
 
 const client = new MeiliSearch({
   host: 'http://18.227.13.140',
@@ -25,7 +26,7 @@ const BusquedaMEILI = () => {
   }, [searchQuery]);
 
   return (
-    <div>
+    <div className="app-container">
       <h1>ARI CINEMA.tv</h1>
       <input
         type="text"
@@ -34,13 +35,17 @@ const BusquedaMEILI = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
-      <ul>
-        {searchResults.map((movie) => (
-          <li key={movie.id}>
-            <p>{movie.title} - {movie.genres}</p>
-          </li>
-        ))}
-      </ul>
+      {searchQuery === '' ? ( //si esta vacio muestra el mensaje de abajo
+        <p>Escribe algo para comenzar a buscar</p>
+      ) : (
+        <ul>
+          {searchResults.map((movie) => (
+            <li key={movie.id}>
+              <p>{movie.title} - {movie.genres}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
