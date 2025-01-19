@@ -41,7 +41,7 @@ const BusquedaMEILI = () => {
         <ul>
           {searchResults.map((movie) => (
             <li key={movie.id}>
-              <img src={movie.poster} alt={movie.title} className="movie-poster" />
+              <img src={movie.poster} alt={movie.title} className="movie-poster" /> 
               <p>{movie.title} - {movie.genres}</p>
             </li>
           ))}
