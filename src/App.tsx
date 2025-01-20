@@ -26,7 +26,7 @@ const BusquedaMEILI = () => {
   }, [searchQuery]);
 
   return (
-    <div className={`app-container ${searchResults.length > 0 ? 'results-visible' : ''}`}>
+    <div className={`app-container ${searchQuery ? 'blurred' : ''}`}>
       <h1>ARI CINEMA.tv</h1>
       <input
         type="text"
@@ -35,14 +35,24 @@ const BusquedaMEILI = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
-      {searchQuery === '' ? ( //si esta vacio muestra el mensaje de abajo
+      {searchQuery === '' ? ( //si esta vacio muestra el mensaje
         <p>Escribe algo para comenzar a buscar</p>
       ) : (
         <ul>
           {searchResults.map((movie) => (
             <li key={movie.id}>
-              <img src={movie.poster} alt={movie.title} className="movie-poster" /> 
-              <p>{movie.title} - {movie.genres}</p>
+              <img src={movie.poster} alt={movie.title} className="movie-poster" />
+              <p>{movie.title}</p>
+              <div className="genres">
+                {Array.isArray(movie.genres)
+                  ? movie.genres.map((genre) => (
+                      <span key={genre.trim()} className="genre">{genre.trim()}</span>
+                    ))
+                  : typeof movie.genres === 'string' && movie.genres.split(',').map((genre) => (
+                      <span key={genre.trim()} className="genre">{genre.trim()}</span> //en resumen trata los generos como un array y los divide
+                                                                                       //creando varios individuales 
+                    ))}
+              </div>
             </li>
           ))}
         </ul>
