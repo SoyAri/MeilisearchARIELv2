@@ -20,7 +20,7 @@ ARI CINEMA.tv es una aplicación de búsqueda que utiliza **MeiliSearch** para o
 
 ### 2. Instalar Docker  
 Ejecuta los siguientes comandos en tu VPS:  
-```bash
+
 sudo apt update  
 sudo apt install docker.io -y  
 sudo systemctl start docker  
